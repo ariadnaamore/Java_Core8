@@ -27,6 +27,6 @@ public Seasons getSeason() {
 		System.out.println("Press 7 for show previous season");
 		System.out.println("Press 8 for show all months have even number of days");
 		System.out.println("Press 9 for show all months have odd number of days");
-		System.out.println("Press 10 shoe if entered month have even number of dayss");
+		System.out.println("Press 10 show if entered month have even number of dayss");
 	}
 }
