@@ -156,8 +156,8 @@ public class Application {
 				String nextSes = sc.next().toUpperCase();
 				boolean flag5 = false;
 
-				for (Month m : mon) {
-					if (m.getSeason().name().equals(nextSes)) {
+				for (Seasons se : season) {
+					if (se.name().equals(nextSes)) {
 
 						flag5 = true;
 					}
@@ -168,11 +168,12 @@ public class Application {
 					int s1 = ses.ordinal();
 					System.out.println("The next season is: ");
 
-					for (Month ns : mon) {
-						if (ns.getSeason().ordinal() == s1) {
-							System.out.println(ns.getSeason().nextses());
+					for (Seasons ns : season) {
+						if (ns.ordinal() == s1) {
+							System.out.println(ns.getNextSeason(nextSes));
+							break;
 						}
-						break;
+
 					}
 				}
 				if (!flag5) {
@@ -187,8 +188,8 @@ public class Application {
 				String prevSes = sc.next().toUpperCase();
 				boolean flag6 = false;
 
-				for (Month m : mon) {
-					if (m.getSeason().name().equals(prevSes)) {
+				for (Seasons se : season) {
+					if (se.name().equals(prevSes)) {
 
 						flag6 = true;
 					}
@@ -199,13 +200,12 @@ public class Application {
 					int s2 = ses.ordinal();
 					System.out.println("The previous season is: ");
 
-					for (Month ns : mon) {
-						if (ns.getSeason().ordinal() == s2) {
+					for (Seasons ns : season) {
+						if (ns.ordinal() == s2) {
 
-							System.out.println(ns.getSeason().prevses());
-
+							System.out.println(ns.getPrevSeasons(prevSes));
+							break;
 						}
-						break;
 					}
 				}
 				if (!flag6) {
@@ -219,9 +219,8 @@ public class Application {
 				System.out.println("Month with even numbers of day : ");
 
 				for (Month m : mon) {
-					if (m.getDay() % 2 == 0) {
+					if (m.getDay() % 2 == 0)
 						System.out.println(m.name());
-					}
 				}
 				break;
 //end of eight
@@ -229,9 +228,9 @@ public class Application {
 			case "9":
 				System.out.println("Month with odd numbers of day :  ");
 				for (Month m : mon) {
-					if (m.getDay() % 2 == 0) {
+					if (m.getDay() % 2 == 1) {
+						System.out.println(m.name());
 					}
-					System.out.println(m.name());
 				}
 				break;
 //end of ninth
@@ -241,30 +240,33 @@ public class Application {
 				sc = new Scanner(System.in);
 				String dayMonth = sc.next().toUpperCase();
 				boolean flag7 = false;
+
 				for (Month m : mon) {
+					flag7 = false;
+
 					if (m.name().equals(dayMonth)) {
+
 						System.out.println(m.name());
 						flag7 = true;
 					}
+
 					if (flag7) {
-						for (Month mds : mon) {
-							if (mds.getDay() % 2 == 0) {
-								System.out.println("This month has even number of days");
-							}
+						if (m.getDay() % 2 == 0) {
+							System.out.println("This month has even number of days");
+						} else {
+							System.out.println("This month has odd number of days");
 						}
-						System.out.println("This month has odd number of days");
-					}
-					break;
+						break;
+					
 				}
-
-				if (!flag7) {
+				if (!flag7)
 					System.out.println("This value doesn't exist. Enter valid name");
-				}
-				break;
-//end of tenth
 			}
-
+			break;
+//end of tenth
 		}
 
 	}
+
+}
 }
